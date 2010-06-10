@@ -90,6 +90,8 @@ class MailChimp(object):
             elif value is not None:
                 if type(value) == bool:
                     value = str(value).lower()
+                elif type(value) == unicode:
+                    value = value.encode('utf-8')
                 pairs.append('%s=%s' % (name, quote_plus(value)))
         return '&'.join(pairs)
 
